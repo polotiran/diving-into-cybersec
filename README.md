@@ -1,6 +1,6 @@
 # diving-into-cybersec
 A collection of my labs and reflections about cybersecurity.
-As the labs will be made on Qemu/KVM virtual machines you can find a quick introduction to this virtualization stack [here](diving-into-cybersec/virt-stack).
+As the labs will be made on Qemu/KVM virtual machines you can find a quick introduction to this virtualization stack [here](virt-stack).
 
 ## Objectives
 This repository is meant to:
