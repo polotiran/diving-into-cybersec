@@ -16,6 +16,7 @@ This repository is meant to:
 ## License
 All code and documentation in this repository are licensed under the [MIT License](LICENSE).
 I decided to use this so that you can use whatever piece of code or script you find here but I also cannot be held responsible if you use the techniques you see for malicious purposes :)
+(please don't)
 
 ## Time
 This repository is made for me to document my learnings.
