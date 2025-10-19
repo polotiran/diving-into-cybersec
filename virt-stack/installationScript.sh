@@ -29,13 +29,21 @@ elif [[ "$PKG_MANAGER" == "dnf" ]]; then
     dnf install -y @virtualization qemu-kvm libvirt libvirt-daemon bridge-utils virt-install
 fi
 
-# Add current user to groups
 CURRENT_USER=${SUDO_USER:-$USER}
 echo "Adding $CURRENT_USER to libvirt and kvm groups..."
 usermod -aG libvirt "$CURRENT_USER"
-usermod -aG qemu "$CURRENT_USER"
+usermod -aG kvm "$CURRENT_USER"
 
-# Enable libvirt service
+USER_HOME=$(eval echo "~$CURRENT_USER")
+CONFIG_DIR="$USER_HOME/.config/libvirt"
+CONFIG_FILE="$CONFIG_DIR/libvirt.conf"
+
+echo "Configuring libvirt to use the system daemon for $CURRENT_USER..."
+
+mkdir -p "$CONFIG_DIR"
+echo 'uri_default = "qemu:///system"' > "$CONFIG_FILE"
+chown -R "$CURRENT_USER:$CURRENT_USER" "$CONFIG_DIR"
+
 echo "Enabling libvirt service..."
 systemctl enable --now libvirtd
 
